@@ -2,14 +2,6 @@ import { UPDATE_EXTENSION } from '@things-factory/import-base'
 import { store } from '@things-factory/shell'
 import * as XLSX from 'xlsx'
 
-function importXlsx(params) {
-  excelToJson(params)
-}
-
-function importXls(params) {
-  excelToJson(params)
-}
-
 function excelToJson(params) {
   let workbook = XLSX.read(params, {
     type: 'binary'
@@ -25,10 +17,10 @@ export default function bootstrap() {
     type: UPDATE_EXTENSION,
     extensions: {
       xlsx: {
-        import: importXlsx
+        import: excelToJson
       },
       xls: {
-        import: importXls
+        import: excelToJson
       }
     }
   })
