@@ -57,14 +57,14 @@ async function excelToObj(params) {
           } else {
             if (extraData[ws._columns[columncount]._key]) {
               let extraDataItem = extraData[ws._columns[columncount]._key].filter(itm => itm.name === cellVal)
-              prev['id'] = extraDataItem.length > 0 ? extraDataItem[0].id : ''
+              prev['id'] = extraDataItem.length > 0 ? extraDataItem[0].id.toString() : null
             }
-            prev[e] = cellVal
+            prev[e] = cellVal ? cellVal.toString() : null
           }
           return prev[e]
         }, objRow)
       } else {
-        objRow[ws._columns[columncount].key] = cellVal
+        if (cellVal) objRow[ws._columns[columncount].key] = cellVal.toString()
       }
     }
     records.push(objRow)
