@@ -47,6 +47,14 @@ async function excelToObj(params) {
 
     for (let columncount = 0; columncount < ws._rows[rowcount]._cells.length; columncount++) {
       let currentCell = ws._rows[rowcount]._cells[columncount]
+      let columnType = ''
+      if (currentCell) {
+        let currentColumnCode = currentCell._address.match(/[a-z]+|[^a-z]+/gi)[0]
+        columnType = ws.dataValidations.model[currentColumnCode + '2:' + currentColumnCode + ws._rows.length.toString()]
+          ? ws.dataValidations.model[currentColumnCode + '2:' + currentColumnCode + ws._rows.length.toString()].type
+          : undefined
+      }
+
       let cellVal = currentCell ? currentCell.value : ''
 
       let arrColumnKeys = ws._columns[columncount].key.split('.')
@@ -59,12 +67,31 @@ async function excelToObj(params) {
               let extraDataItem = extraData[ws._columns[columncount]._key].filter(itm => itm.name === cellVal)
               prev['id'] = extraDataItem.length > 0 ? extraDataItem[0].id.toString() : null
             }
-            prev[e] = cellVal ? cellVal.toString() : null
+            switch (columnType) {
+              case 'decimal':
+                prev[e] = cellVal ? cellVal : 0
+                break
+              default:
+                prev[e] = cellVal ? cellVal.toString() : null
+                break
+            }
           }
           return prev[e]
         }, objRow)
       } else {
-        if (cellVal) objRow[ws._columns[columncount].key] = cellVal.toString()
+        if (
+          (ws._rows[0]._cells[columncount].value === 'id' && cellVal !== '') ||
+          ws._rows[0]._cells[columncount].value !== 'id'
+        ) {
+          switch (columnType) {
+            case 'decimal':
+              objRow[ws._columns[columncount].key] = cellVal ? cellVal : 0
+              break
+            default:
+              objRow[ws._columns[columncount].key] = cellVal ? cellVal.toString() : null
+              break
+          }
+        }
       }
     }
     records.push(objRow)
