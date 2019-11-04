@@ -29,10 +29,10 @@
     "xlsx": "^0.14.3"
   },
   "devDependencies": {
-    "@things-factory/auth-ui-jwt": "*",
-    "@things-factory/biz-test": "*",
-    "@things-factory/export-ui-excel": "*",
-    "@things-factory/menu-ui": "*",
-    "@things-factory/resource-ui": "*"
+    "@things-factory/auth-ui-jwt": "^1.0.0-alpha.1",
+    "@things-factory/biz-test": "^1.0.0-alpha.1",
+    "@things-factory/export-ui-excel": "^1.0.0-alpha.1",
+    "@things-factory/menu-ui": "^1.0.0-alpha.1",
+    "@things-factory/resource-ui": "^1.0.0-alpha.1"
   }
 }
