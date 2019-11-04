@@ -1,6 +1,6 @@
 {
   "name": "@things-factory/import-ui-excel",
-  "version": "0.9.0",
+  "version": "1.0.0-alpha.1",
   "main": "dist-server/index.js",
   "browser": "client/index.js",
   "things-factory": true,
@@ -23,9 +23,9 @@
     "migration:revert": "node ./node_modules/typeorm/cli.js migration:revert"
   },
   "dependencies": {
-    "@things-factory/import-ui": "^0.9.0",
-    "@things-factory/layout-base": "^0.9.0",
-    "@things-factory/shell": "^0.9.0",
+    "@things-factory/import-ui": "^1.0.0-alpha.1",
+    "@things-factory/layout-base": "^1.0.0-alpha.1",
+    "@things-factory/shell": "^1.0.0-alpha.1",
     "xlsx": "^0.14.3"
   },
   "devDependencies": {
