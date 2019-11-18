@@ -1,7 +1,7 @@
 import { UPDATE_EXTENSION } from '@things-factory/import-base'
 import { store } from '@things-factory/shell'
-import * as XLSX from 'xlsx'
-import Excel from 'exceljs'
+import * as XLSX from '!xlsx'
+import Excel from '!exceljs'
 
 /**
  * Convert Excel to Object
