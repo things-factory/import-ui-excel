@@ -25,7 +25,6 @@
   "dependencies": {
     "@things-factory/import-ui": "^2.0.0",
     "@things-factory/layout-base": "^2.0.0",
-    "@things-factory/shell": "^2.0.0",
     "xlsx": "^0.14.3"
   },
   "devDependencies": {
